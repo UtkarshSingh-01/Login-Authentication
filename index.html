@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Auth System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- 🔔 Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- 🔐 Login Form -->
+    <div class="form-box" id="login-box">
+      <h2>Login</h2>
+      <input type="text" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+
+      <div class="actions">
+        <label><input type="checkbox" onclick="togglePassword('login-password')"> Show Password</label>
+        <a href="#" onclick="showForm('forgot')">Forgot Password?</a>
+      </div>
+
+      <label style="margin-top:10px;">
+        <input type="checkbox" id="remember-me"> Remember Me
+      </label>
+      <button onclick="login()">Login</button>
+
+      <p>Don't have an account? <a href="#" onclick="showForm('register')">Register</a></p>
+    </div>
+
+    <!-- 📝 Register Form -->
+    <div class="form-box" id="register-box" style="display:none;">
+      <h2>Register</h2>
+      <input type="text" id="reg-name" placeholder="Full Name" required>
+      <input type="email" id="reg-email" placeholder="Email" required>
+      <input type="password" id="reg-password" placeholder="Password" required oninput="checkStrength(this.value)">
+      <div class="strength-meter" id="strength-meter">
+        <div class="strength-bar" id="strength-bar"></div>
+      </div>
+      <div class="actions">
+        <label><input type="checkbox" onclick="togglePassword('reg-password')"> Show Password</label>
+      </div>
+      <button onclick="register()">Register</button>
+      <p>Already have an account? <a href="#" onclick="showForm('login')">Login</a></p>
+    </div>
+
+    <!-- 🔄 Forgot Password -->
+    <div class="form-box" id="forgot-box" style="display:none;">
+      <h2>Reset Password</h2>
+      <input type="email" id="forgot-email" placeholder="Enter Registered Email" required>
+      <input type="password" id="new-password" placeholder="New Password" required oninput="checkStrength(this.value)">
+      <div class="strength-meter" id="strength-meter">
+        <div class="strength-bar" id="strength-bar"></div>
+      </div>
+      <div class="actions">
+        <label><input type="checkbox" onclick="togglePassword('new-password')"> Show Password</label>
+      </div>
+      <button onclick="resetPassword()">Reset Password</button>
+      <p>Back to <a href="#" onclick="showForm('login')">Login</a></p>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
